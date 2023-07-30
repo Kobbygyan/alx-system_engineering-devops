@@ -3,9 +3,13 @@
 #+ a sleep 2 in between each iteration.
 #   Displays "I am invincible!!!" in between each iteration.
 
-while true
-do
-  echo "To infinity and beyond"
-  sleep 2
-  trap 'echo "I am invincible"' SIGTERM 
-done
+function invincible_message {
+	    echo "I am invincible!!!"
+    }
+
+trap invincible_message SIGTERM
+
+while true; do
+	    echo "To infinity and beyond"
+	        sleep 2
+	done
