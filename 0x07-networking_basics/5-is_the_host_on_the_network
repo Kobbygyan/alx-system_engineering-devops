@@ -1,22 +1,10 @@
 #!/usr/bin/env bash
 
 # Check if an IP address is provided as an argument
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 {IP_ADDRESS}"
-    exit 1
+#Script that pings another address enterd over 5 times
+if [ "$1" ]
+then
+ping -c 5 "$1"
+else
+echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
 fi
-
-# Extract the IP address from the argument
-ip_address="$1"
-
-# Ping the IP address 5 times
-for i in {1..5}; do
-    ping -c 1 "$ip_address" > /dev/null
-
-    # Check the return code of the ping command
-    if [ $? -eq 0 ]; then
-        echo "Ping $i: $ip_address is reachable"
-    else
-        echo "Ping $i: $ip_address is not reachable"
-    fi
-done
